@@ -13,6 +13,7 @@ public class Main {
         int yearZeroBased;
         Scanner Keyboard;
         Scanner keyboard = new Scanner(System.in);
+
         System.out.println("Monday's child is fair of face,");
         System.out.println("Tuesday's child is full of grace,");
         System.out.println("Wednesday's child is full of woe,");
@@ -31,6 +32,9 @@ public class Main {
 
         int monthAnswer = amountOfDaysInMonth(month, year);
         System.out.println("There are " + monthAnswer + " days in this month");
+       int zellerNumber = zellersCongruence(month, year, dayOfMonth);
+       poemLines(zellerNumber);
+       System.out.println(poemLines(zellerNumber));
     }
     public static int amountOfDaysInMonth(int month, int year) {
         switch (month) {
@@ -55,6 +59,7 @@ public class Main {
                 } else {
                     return 28;
                 }
+
         }
     }
     public static int zellersCongruence(int month, int year, int dayOfMonth) {
@@ -64,11 +69,33 @@ public class Main {
             }
 
             int yearZero = (year / 100);
-            int zellerCongruenceEquation = 13 * (month + 1);
+            int zellersCongruenceEquation = (13 * (month + 1));
             int yearCentury = (year % 100);
-            int dayOfWeek = ((dayOfMonth + (zellerCongruenceEquation/5)+ yearCentury +(yearCentury/4)+(yearZero/4)+(5*(yearZero)))%7);
+            int dayOfWeek = ((dayOfMonth + (zellersCongruenceEquation/5)+ yearCentury +(yearCentury/4)+(yearZero/4)+(5*(yearZero)))%7);
             return dayOfWeek;
         }
+    public static String poemLines(int dayOfWeek) {
+        switch (dayOfWeek) {
+            case 2:
+                return ("You were born on a Monday. Based on the poem you are fair of face.");
+            case 3:
+                return ("You were born on a Tuesday. According to the poem, you are full of grace.");
+            case 4:
+                return ("You were born on a Wednesday. Therefore you are full of woe.");
+            case 5:
+                return ("You were born on a Thursday. Based on the poem, you have far to go.");
+            case 6:
+                return ("You were born on a Friday. The poem says you are loving and giving.");
+            case 0:
+                return ("You were born on a Saturday. According to the poem, you work hard for a living.");
+            default:
+                return ("You were born on the Sabbath Day. Therefore you are fair and wise in every way.");
+
+        }
+    }
+
+
+
     }
 
 
